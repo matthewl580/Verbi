@@ -38,11 +38,8 @@ function start(dict) {
   dictionary = dict;
   // set up the word array with an innitial 10 items
   for (let i = 0; i < 10; i++) {
-    wordList.push(selectNewWord());
   }
-  console.log(wordList);
   // display the first word
-  displayWord(wordList[place]);
 }
 function fetchWord(letterNum, defNum) {
   return {
@@ -52,27 +49,7 @@ function fetchWord(letterNum, defNum) {
 }
 
 
-function getNextWord(direction) {
-  if (direction == "forward" || direction == "f") {
-    if (place + 1 == wordList.length) {
-      // if we're on the last word
-      console.log("generating new word");
-      wordList.push(selectNewWord());
-      return wordList[wordList.length - 1];
-    } else {
-      return wordList[place + 1];
-    }
-  } else {
-    // direction != "forward", go in the other direction
-    console.log("going to a previous word");
-    if (place - 1 == 0) {
-      // THROW AN ERROR HERE =============================================================================>
-      return wordList[0];
-    } else {
-      return wordList[place - 1];
-    }
-  }
-}
+
 function splitIntoSyllables(word) {
   word = word.toLowerCase(); // Convert to lowercase for consistency
 
@@ -139,7 +116,7 @@ function selectNewWord() {
 }
 
 
-
+fastify.get("/", function (request, reply) {return selectNewWord}
 
 // Run the server and report out to the logs
 fastify.listen(
