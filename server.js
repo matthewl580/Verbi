@@ -1,3 +1,4 @@
+const path = require('path');
 const fastify = require("fastify")({
   // Set this to true for detailed logging:
   logger: false,
