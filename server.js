@@ -11,14 +11,14 @@ fastify.register(require("@fastify/static"), {
 
 var dictionary = [];
 var place = 3;
-
+var WEB_URL_PATH = "https://verbi-git-main-matthewl580s-projects.vercel.app/"
 setUpDictionary(true);
 function setUpDictionary(callStartFunc = false) {
   // Import all the letters
   var i = 0;
   for (const letter of "abcdefghijklmnopqrstuvwxyz") {
     console.log(letter, "abcdefghijklmnopqrstuvwxyz".indexOf(letter));
-    fetch(`Data/${letter}.json`)
+    fetch(`${WEB_URL_PATH}Data/${letter}.json`)
       .then((response) => response.json())
       .then((data) => {
         // Access the imported data using the letter variable and add it to the dictionary
