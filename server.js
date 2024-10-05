@@ -18,7 +18,7 @@ function setUpDictionary(callStartFunc = false) {
   var i = 0;
   for (const letter of "abcdefghijklmnopqrstuvwxyz") {
     console.log(letter, "abcdefghijklmnopqrstuvwxyz".indexOf(letter));
-    fetch(`/Data/${letter}.json`)
+    fetch(`Data/${letter}.json`)
       .then((response) => response.json())
       .then((data) => {
         // Access the imported data using the letter variable and add it to the dictionary
