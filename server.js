@@ -116,7 +116,7 @@ function selectNewWord() {
 }
 
 
-fastify.get("/", function (request, reply) {return selectNewWord}
+fastify.get("/", function (request, reply) {return selectNewWord()})
 
 // Run the server and report out to the logs
 fastify.listen(
