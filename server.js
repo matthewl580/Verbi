@@ -24,7 +24,6 @@ function setUpDictionary(callStartFunc = false) {
   // Import all the letters
   var i = 0;
   for (const letter of "abcdefghijklmnopqrstuvwxyz") {
-    console.log(letter, "abcdefghijklmnopqrstuvwxyz".indexOf(letter));
     fetch(`${WEB_URL_PATH}Data/${letter}.json`)
       .then((response) => response.json())
       .then((data) => {
@@ -134,5 +133,6 @@ fastify.listen(
       process.exit(1);
     }
     console.log(`Your app is listening on ${address}`);
+    selectNewWord()
   }
 );
