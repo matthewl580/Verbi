@@ -14,7 +14,7 @@ fastify.register(require("@fastify/view"), { // View is a templating manager for
 });
 
 
-
+console.log(__dirname)
 
 var dictionary = [];
 var place = 3;
@@ -23,7 +23,7 @@ async function setUpDictionary() {
   // Import all the letters
   var i = 0;
   for (const letter of "abcdefghijklmnopqrstuvwxyz") {
-        await dictionary.push(readJSONFile(`Data/${letter}.json`))
+        await dictionary.push(readJSONFile(`/Data/${letter}.json`))
      console.log(i)
     i++
   }
