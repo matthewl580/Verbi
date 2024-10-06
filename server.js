@@ -28,6 +28,7 @@ function setUpDictionary() {
       .then((data) => {
         // Access the imported data using the letter variable and add it to the dictionary
         dictionary[i] = data;
+        console.log(i)
         i++;
       })
       .catch((error) => console.error("Error fetching JSON:", error));
@@ -97,9 +98,9 @@ function selectNewWord() {
   let i = 0;
   // skip over words that don't have a definition atached
   while (
-    word.word == undefined ||
-    word.def.MEANINGS["1"] == undefined ||
-    i > 100
+    (word.word == undefined ||
+    word.def.MEANINGS["1"] == undefined) &&
+    i < 100
   ) {
     let randomLetterNum = Math.round(Math.random() * 25);
     let defNum = Math.round(Math.random() * Object.keys(dictionary[1]).length);
@@ -107,8 +108,9 @@ function selectNewWord() {
     word.letterNum = randomLetterNum;
     word.defNum = defNum;
   }
+    console.log(word);
+
   return word;
-  console.log(word);
 }
 
 
