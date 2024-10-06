@@ -19,7 +19,7 @@ fastify.register(require("@fastify/view"), { // View is a templating manager for
 var dictionary = [];
 var place = 3;
 var WEB_URL_PATH = "https://verbi-git-main-matthewl580s-projects.vercel.app/"
-function setUpDictionary(callStartFunc = false) {
+function setUpDictionary() {
   // Import all the letters
   var i = 0;
   for (const letter of "abcdefghijklmnopqrstuvwxyz") {
@@ -27,21 +27,16 @@ function setUpDictionary(callStartFunc = false) {
       .then((response) => response.json())
       .then((data) => {
         // Access the imported data using the letter variable and add it to the dictionary
-        dictionary["abcdefghijklmnopqrstuvwxyz".indexOf(letter)] = data;
-        //console.log(dictionary[i])
+        dictionary[i] = data;
         i++;
-        if (i == 26 && callStartFunc == true) {
-          start(dictionary);
-        }
       })
       .catch((error) => console.error("Error fetching JSON:", error));
   }
+  
   return dictionary;
 }
 
-function start(dict) {
-  dictionary = dict;
-}
+
 function fetchWord(letterNum, defNum) {
   return {
     word: Object.keys(dictionary[letterNum])[defNum],
@@ -128,7 +123,7 @@ fastify.listen(
       process.exit(1);
     }
     console.log(`Your app is listening on ${address}`);
-    setUpDictionary(true);
+    setUpDictionary();
     selectNewWord()
   }
 );
