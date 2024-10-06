@@ -112,6 +112,6 @@ function selectNewWord() {
 setUpDictionary()
 
 export function GET(request) {
- return new Response(selectNewWord()) }
+ return new Response(JSON.stringify(selectNewWord())) }
 
 
