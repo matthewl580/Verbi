@@ -37,6 +37,7 @@ function readJSONFile (filePath) {
   });
 }
 function fetchWord(letterNum, defNum) {
+  console.log(4)
   return {
     word: Object.keys(dictionary[letterNum])[defNum],
     def: Object.values(dictionary[letterNum])[defNum],
