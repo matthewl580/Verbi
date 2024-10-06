@@ -1,5 +1,6 @@
 const fs = require("fs")
 const path = require('path');
+
 // IMPORTANT - Fastly
 const fastify = require("fastify")({ logger: false });
 fastify.register(require("@fastify/static"), { // Setup our static files
@@ -19,10 +20,21 @@ fastify.register(require("@fastify/view"), { // View is a templating manager for
 var dictionary = [];
 var place = 3;
 var WEB_URL_PATH = "https://wholesale-vigorous-beanie.glitch.me"//"https://verbi-git-main-matthewl580s-projects.vercel.app/"
+
+
+
+
+console.log(__dirname)
+
+var dictionary = [];
+var place = 3;
+var WEB_URL_PATH = "https://verbi-six.vercel.app"
+
 async function setUpDictionary() {
   // Import all the letters
   var i = 0;
   for (const letter of "abcdefghijklmnopqrstuvwxyz") {
+
       dictionary.push( await readJSONFile(`Data/${letter}.json`))
      console.log(i)
     i++
@@ -122,6 +134,7 @@ function selectNewWord() {
 }
 
 
+
 fastify.get("/", function (request, reply) {return selectNewWord()})
 
 // Run the server and report out to the logs
@@ -137,3 +150,4 @@ setUpDictionary()
 
   }
 );
+
