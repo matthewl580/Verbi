@@ -19,7 +19,6 @@ fastify.register(require("@fastify/view"), { // View is a templating manager for
 var dictionary = [];
 var place = 3;
 var WEB_URL_PATH = "https://verbi-git-main-matthewl580s-projects.vercel.app/"
-setUpDictionary(true);
 function setUpDictionary(callStartFunc = false) {
   // Import all the letters
   var i = 0;
@@ -42,10 +41,6 @@ function setUpDictionary(callStartFunc = false) {
 
 function start(dict) {
   dictionary = dict;
-  // set up the word array with an innitial 10 items
-  for (let i = 0; i < 10; i++) {
-  }
-  // display the first word
 }
 function fetchWord(letterNum, defNum) {
   return {
@@ -109,7 +104,7 @@ function selectNewWord() {
   while (
     word.word == undefined ||
     word.def.MEANINGS["1"] == undefined ||
-    i > 50
+    i > 100
   ) {
     let randomLetterNum = Math.round(Math.random() * 25);
     let defNum = Math.round(Math.random() * Object.keys(dictionary[1]).length);
@@ -133,6 +128,7 @@ fastify.listen(
       process.exit(1);
     }
     console.log(`Your app is listening on ${address}`);
+    setUpDictionary(true);
     selectNewWord()
   }
 );
