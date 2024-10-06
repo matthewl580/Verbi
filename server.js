@@ -1,4 +1,4 @@
-
+const fs = require("fs")
 const path = require('path');
 // IMPORTANT - Fastly
 const fastify = require("fastify")({ logger: false });
@@ -18,26 +18,35 @@ fastify.register(require("@fastify/view"), { // View is a templating manager for
 
 var dictionary = [];
 var place = 3;
-var WEB_URL_PATH = "https://verbi-git-main-matthewl580s-projects.vercel.app/"
-function setUpDictionary() {
+var WEB_URL_PATH = "https://wholesale-vigorous-beanie.glitch.me"//"https://verbi-git-main-matthewl580s-projects.vercel.app/"
+async function setUpDictionary() {
   // Import all the letters
   var i = 0;
   for (const letter of "abcdefghijklmnopqrstuvwxyz") {
-    fetch(`${WEB_URL_PATH}Data/${letter}.json`)
-      .then((response) => response.json())
-      .then((data) => {
-        // Access the imported data using the letter variable and add it to the dictionary
-        dictionary[i] = data;
-        console.log(i)
-        i++;
-      })
-      .catch((error) => console.error("Error fetching JSON:", error));
+      dictionary.push( await readJSONFile(`Data/${letter}.json`))
+     console.log(i)
+    i++
   }
-  
   return dictionary;
 }
+function readJSONFile (filePath) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        reject(err);   
 
+      } else {
+        try {
+          const jsonData = JSON.parse(data);
+          resolve(jsonData);
+        } catch (parseError) {
+          reject(parseError);   
 
+        }
+      }
+    });
+  });
+}
 function fetchWord(letterNum, defNum) {
   return {
     word: Object.keys(dictionary[letterNum])[defNum],
@@ -94,27 +103,26 @@ function splitIntoSyllables(word) {
 }
 
 function selectNewWord() {
-  var word = { word: undefined, def: undefined };
+  var word = '';
   let i = 0;
+  console.log(5)
   // skip over words that don't have a definition atached
   while (
-    (word.word == undefined ||
-    word.def.MEANINGS["1"] == undefined) &&
+    word == '' ||
     i < 100
   ) {
     let randomLetterNum = Math.round(Math.random() * 25);
-    let defNum = Math.round(Math.random() * Object.keys(dictionary[1]).length);
+    let defNum =  Math.round(Math.random() *Object.keys(dictionary[randomLetterNum]).length);
     word = fetchWord(randomLetterNum, defNum);
     word.letterNum = randomLetterNum;
     word.defNum = defNum;
+    i++
   }
-    console.log(word);
-
   return word;
 }
 
 
-fastify.post("/", function (request, reply) {return selectNewWord()})
+fastify.get("/", function (request, reply) {return selectNewWord()})
 
 // Run the server and report out to the logs
 fastify.listen(
@@ -125,6 +133,7 @@ fastify.listen(
       process.exit(1);
     }
     console.log(`Your app is listening on ${address}`);
-    setUpDictionary();
+setUpDictionary()
+
   }
 );
