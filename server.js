@@ -1,3 +1,4 @@
+
 const path = require('path');
 // IMPORTANT - Fastly
 const fastify = require("fastify")({ logger: false });
@@ -135,3 +136,9 @@ fastify.listen(
     console.log(`Your app is listening on ${address}`);
   }
 );
+// VERCEL
+const {createServer} = require('http')
+
+const server = createServer(() => {})
+
+server.listen(3000)
