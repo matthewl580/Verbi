@@ -3,7 +3,7 @@ const path = require('path');
 // IMPORTANT - Fastly
 const fastify = require("fastify")({ logger: false });
 fastify.register(require("@fastify/static"), { // Setup our static files
-  root: path.join(__dirname, "public"),
+  root: path.join(__dirname, "Data"),
   prefix: "/",
 });
 fastify.register(require("@fastify/formbody")); // Formbody lets us parse incoming forms
