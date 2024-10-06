@@ -124,6 +124,8 @@ function selectNewWord() {
 
 
 fastify.get("/", function (request, reply) {return selectNewWord()})
+export function GET(request) {
+ return new Response("hi") }
 
 // Run the server and report out to the logs
 fastify.listen(
