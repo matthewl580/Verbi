@@ -18,7 +18,7 @@ fastify.register(require("@fastify/view"), { // View is a templating manager for
 
 var dictionary = [];
 var place = 3;
-var WEB_URL_PATH = "https://verbi-git-main-matthewl580s-projects.vercel.app/"
+var WEB_URL_PATH = "https://verbi-six.vercel.app/"
 async function setUpDictionary() {
   // Import all the letters
   var i = 0;
