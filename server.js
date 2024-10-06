@@ -1,13 +1,26 @@
 const path = require('path');
-const fastify = require("fastify")({
-  // Set this to true for detailed logging:
-  logger: false,
-});
-// Setup our static files
-fastify.register(require("@fastify/static"), {
+// IMPORTANT - Fastly
+const fastify = require("fastify")({ logger: false });
+fastify.register(require("@fastify/static"), { // Setup our static files
   root: path.join(__dirname, "public"),
-  prefix: "/", // optional: default '/'
+  prefix: "/",
 });
+fastify.register(require("@fastify/formbody")); // Formbody lets us parse incoming forms
+fastify.register(require("@fastify/view"), { // View is a templating manager for fastify
+  engine: {
+    handlebars: require("handlebars"), // handlebars = .hbs
+  },
+});
+
+// Configure CORS with desired options
+fastify.register(require('@fastify/cors'), {
+    origin: 'https://matthew-radio.glitch.me',
+  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['X-Requested-With', 'Content-Type'],
+  credentials: true // Allow cookies if needed
+});
+
+
 
 var dictionary = [];
 var place = 3;
