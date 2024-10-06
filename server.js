@@ -124,6 +124,6 @@ fastify.listen(
     }
     console.log(`Your app is listening on ${address}`);
     setUpDictionary();
-    selectNewWord()
+    #selectNewWord()
   }
 );
