@@ -23,7 +23,7 @@ async function setUpDictionary() {
   // Import all the letters
   var i = 0;
   for (const letter of "abcdefghijklmnopqrstuvwxyz") {
-        dictionary.push( await readJSONFile(path.join(__dirname, "..", "Data",`${letter}.json`)))
+        await dictionary.push(readJSONFile(`Data/${letter}.json`))
      console.log(i)
     i++
   }
