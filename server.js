@@ -136,9 +136,3 @@ fastify.listen(
     console.log(`Your app is listening on ${address}`);
   }
 );
-// VERCEL
-const {createServer} = require('http')
-
-const server = createServer(() => {})
-
-server.listen(3000)
