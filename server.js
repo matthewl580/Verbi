@@ -1,6 +1,27 @@
 const fs = require("fs")
 const path = require('path');
 
+// IMPORTANT - Fastly
+const fastify = require("fastify")({ logger: false });
+fastify.register(require("@fastify/static"), { // Setup our static files
+  root: path.join(__dirname, "public"),
+  prefix: "/",
+});
+fastify.register(require("@fastify/formbody")); // Formbody lets us parse incoming forms
+fastify.register(require("@fastify/view"), { // View is a templating manager for fastify
+  engine: {
+    handlebars: require("handlebars"), // handlebars = .hbs
+  },
+});
+
+
+
+
+var dictionary = [];
+var place = 3;
+var WEB_URL_PATH = "https://wholesale-vigorous-beanie.glitch.me"//"https://verbi-git-main-matthewl580s-projects.vercel.app/"
+
+
 
 
 console.log(__dirname)
@@ -8,11 +29,13 @@ console.log(__dirname)
 var dictionary = [];
 var place = 3;
 var WEB_URL_PATH = "https://verbi-six.vercel.app"
+
 async function setUpDictionary() {
   // Import all the letters
   var i = 0;
   for (const letter of "abcdefghijklmnopqrstuvwxyz") {
-        await dictionary.push(readJSONFile(path.join(__dirname, "Data",`${letter}.json`)))
+
+      dictionary.push( await readJSONFile(`Data/${letter}.json`))
      console.log(i)
     i++
   }
@@ -37,7 +60,6 @@ function readJSONFile (filePath) {
   });
 }
 function fetchWord(letterNum, defNum) {
-  console.log(4)
   return {
     word: Object.keys(dictionary[letterNum])[defNum],
     def: Object.values(dictionary[letterNum])[defNum],
@@ -110,10 +132,22 @@ function selectNewWord() {
   }
   return word;
 }
+
+
+
+fastify.get("/", function (request, reply) {return selectNewWord()})
+
+// Run the server and report out to the logs
+fastify.listen(
+  { port:3000, host: "0.0.0.0" },
+  function (err, address) {
+    if (err) {
+      console.error(err);
+      process.exit(1);
+    }
+    console.log(`Your app is listening on ${address}`);
 setUpDictionary()
 
-export function GET(request) {
-  
- return new Response(JSON.stringify(selectNewWord())) }
-
+  }
+);
 
