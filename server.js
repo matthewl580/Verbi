@@ -14,6 +14,7 @@ fastify.register(require("@fastify/view"), { // View is a templating manager for
 });
 
 
+
 console.log(__dirname)
 
 var dictionary = [];
