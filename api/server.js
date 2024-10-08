@@ -3,26 +3,29 @@
  * Check out the two endpoints this back-end API provides in fastify.get and fastify.post below
  */
 
+
 const path = require("path");
 const fs = require('fs');
 
-export function GET(request) {
+function readFile(filename) {
   return new Promise((resolve, reject) => {
-    fs.readFile(path.join(process.cwd(), 'dictionary.json'), "utf8", (err, data) => {
+    fs.readFile(path.join(__dirname, filename), 'utf8', (err, data) => {
       if (err) {
         reject(err);
       } else {
-        try {
-          // Parse the JSON data into a JavaScript object
-
-          // Return the parsed JSON object as a JSON response
-          resolve(new Response((jsonData)));
-        } catch (error) {
-          // Handle parsing errors gracefully
-          console.error("Error parsing: ", error);
-          reject(error);
-        }
+        resolve(data);
       }
     });
   });
+}
+
+
+export function GET(request) {
+   try {
+    const data = await readFile('dictionary.json');
+    return new Response(data)
+  } catch (error) {
+    console.error('Error reading file:', error);
+     return new Response("error :(
+  }
 }
