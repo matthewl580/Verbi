@@ -11,7 +11,7 @@ export function GET(request) {
   let usersPath = path.join(process.cwd(), 'dictionary.json');
   let dictionary = fs.readFileSync(usersPath);
   var word = { word: undefined, def: undefined };
-  let i = 0;
+  var i = 0;
 var wordIndex = 0;
   // skip over words that don't have a definition atached
   while (
@@ -20,15 +20,16 @@ var wordIndex = 0;
     i < 100
   ) {
      wordIndex = Math.round(Math.random() * Object.keys(dictionary).length);
-    dictKey = Object.keys(dictionary)[wordIndex]
-    word = { word: dictKey,
+    dictKey = Object.keys(dictionary)[wordIndex];
+    word = { 
+      word: dictKey,
     def: dictionary[dictKey],
     index: wordIndex}
     i++
   }
 console.log(2345)
-  console.log(Object.keys(dictionary)
+  console.log(Object.keys(dictionary))
   console.log(3456543345432)
-  console.log(Object.values(dictionary)
+  console.log(Object.values(dictionary))
   return new Response(JSON.stringify(word));
 }
