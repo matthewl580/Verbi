@@ -5,13 +5,24 @@
 
 const path = require("path");
 var fs = require('fs');
-var obj = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'),'utf8');
+//var obj = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'),'utf8');
 /*
  let usersPath = path.join(process.cwd(), 'dictionary.json');
   let file = fs.readFileSync(usersPath);
 */
 export function GET(request) {
-  console.log(4);
+ /* console.log(4);
   console.log(obj);
-  return new Response(obj);
+  return new Response(obj);*/
+ return new Promise((resolve, reject) => {
+    fs.readFile(path.join(process.cwd(), 'dictionary.json'), "utf8", (err, data) => {
+      if (err) {
+        reject(err);
+      }
+     console.log(65)
+      console.log(data);
+      resolve(data);
+    });
+  });
+ 
 }
