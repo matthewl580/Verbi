@@ -27,5 +27,5 @@ export function GET(request) {
     i++
   }
 
-  return new Response(word);
+  return new Response(JSON.stringify(word));
 }
