@@ -23,6 +23,6 @@ export function GET(request) {
       console.log(data);
       resolve(data);
     });
-  })then((data) => {new Response(data)}
+  }).then((data) => {new Response(data)}
  
 }
