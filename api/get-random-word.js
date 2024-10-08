@@ -9,7 +9,8 @@ const fs = require('fs');
 
 export function GET(request) {
   let usersPath = path.join(process.cwd(), 'dictionary.json');
-fs.readFileSync(usersPath).then(dictionary => {
+var dictionary = fs.readFileSync(usersPath)
+  dictionary.then(dictionary => {
     // Code to run after the file is read successfully
     console.log(data);
   var word = { word: undefined, def: undefined };
