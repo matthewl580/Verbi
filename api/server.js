@@ -5,7 +5,7 @@
 
 const path = require("path");
 var fs = require('fs');
-var obj = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'));
+var obj = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'),'utf8');
 /*
  let usersPath = path.join(process.cwd(), 'dictionary.json');
   let file = fs.readFileSync(usersPath);
