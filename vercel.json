@@ -8,5 +8,10 @@
     ],
     "regions": [
         "sfo1"
-    ]
+    ],
+     "functions": {
+        "server.js": {
+            "includeFiles": "dictionary.json"
+        }
+    }
 }
