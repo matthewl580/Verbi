@@ -15,6 +15,7 @@ var dictionary = fs.readFileSync(usersPath)
          return new Response("there was an error :(");
         reject(err);
       } else {
+        console.log(23456754325423)
          console.log(data);
   var word = { word: undefined, def: undefined };
   var i = 0;
