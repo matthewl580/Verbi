@@ -25,6 +25,6 @@ export function GET(request) {
     });
   }).then((data) => {
    return new Response(data)
-  }
+  })
  
 }
