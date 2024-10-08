@@ -7,13 +7,25 @@ var dictionary = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'), {
 })
 var dict = JSON.parse(dictionary)
 console.log("file ready?")
+function isolateValue(urlString) {
+    const url = new URL(urlString);
+    const searchParams = url.searchParams;
+    
+    // Check if 'index' parameter exists
+    if (searchParams.has('index')) {
+      const value = searchParams.get('index');
+      return value;
+    } else {
+      return null;  // Or throw an error if 'index' is mandatory
+    }
+  }
 export function GET(request) {
     //const { body } = request;
-    console.log(request)
+    console.log(isolateValue(request.url))
    var word = {
         word: Object.keys(dict)[100],
         def: Object.values(dict)[100]
 
     }
-    return new Response(word);
+    return new Response(JSON.stringify(word));
 }
