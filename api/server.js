@@ -14,13 +14,14 @@ export function GET(request) {
  /* console.log(4);
   console.log(obj);
   return new Response(obj);*/
- return new Promise((resolve, reject) => {
+  new Promise((resolve, reject) => {
     fs.readFile(path.join(process.cwd(), 'dictionary.json'), "utf8", (err, data) => {
       if (err) {
         reject(err);
       }
      console.log(65)
       console.log(data);
+     return new Response(data);
       resolve(data);
     });
   });
