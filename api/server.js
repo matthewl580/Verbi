@@ -8,5 +8,6 @@ var fs = require('fs');
 var obj = fs.readFileSync('dictionary.json', 'utf8');
 
 export function GET(request) {
+  console.log(obj)
   return new Response(obj);
 }
