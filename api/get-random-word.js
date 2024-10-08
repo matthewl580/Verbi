@@ -22,8 +22,8 @@ export function GET(request) {
     let defNum = Math.round(Math.random() * Object.keys(dictionary[letterNum]).length);
     word = { word: Object.keys(dictionary[letterNum])[defNum],
     def: Object.values(dictionary[letterNum])[defNum],
-    word.letterNum: randomLetterNum,
-    word.defNum:  defNum}
+    letterNum: randomLetterNum,
+    defNum:  defNum}
     i++
   }
 
