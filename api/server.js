@@ -14,7 +14,7 @@ export function GET(request) {
  /* console.log(4);
   console.log(obj);
   return new Response(obj);*/
-  return new Response( new Promise((resolve, reject) => {
+  new Promise((resolve, reject) => {
     fs.readFile(path.join(process.cwd(), 'dictionary.json'), "utf8", (err, data) => {
       if (err) {
         reject(err);
@@ -23,6 +23,6 @@ export function GET(request) {
       console.log(data);
       resolve(data);
     });
-  }))
+  })then((data) => {new Response(data)}
  
 }
