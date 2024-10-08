@@ -13,7 +13,7 @@ var dictionary = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'), {
 var dictLength = Object.entries(dictionary).length
 console.log("file ready?")
 export function GET(request) {
-    /*var word = {
+    var word = {
         word: undefined,
         def: undefined
     };
@@ -26,7 +26,7 @@ export function GET(request) {
             word.def.MEANINGS["1"] == undefined) &&
         i < 100
     ) {
-        wordIndex = Math.round(Math.random() * Object.keys(dictionary).length);
+        wordIndex = Math.round(Math.random() * dictLength);
         var dictKey = Object.keys(dictionary)[wordIndex];
         word = {
             word: dictKey,
@@ -35,7 +35,7 @@ export function GET(request) {
         }
         i++
     }
-console.log(word)*/
+console.log(word)
     return new Response(dictLength);
 
 }
