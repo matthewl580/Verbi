@@ -12,15 +12,21 @@ export function GET(request) {
       if (err) {
         reject(err);
       } else {
-        // Parse the JSON data into a JavaScript object
-        const jsonData = JSON.parse(data);
+        try {
+          // Parse the JSON data into a JavaScript object
+          const jsonData = JSON.parse(data);
 
-        // Return the parsed JSON object as a JSON response
-        resolve(new Response(JSON.stringify(jsonData), {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }));
+          // Return the parsed JSON object as a JSON response
+          resolve(new Response(JSON.stringify(jsonData), {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }));
+        } catch (error) {
+          // Handle parsing errors gracefully
+          console.error("Error parsing JSON:", error);
+          reject(error);
+        }
       }
     });
   });
