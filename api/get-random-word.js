@@ -10,7 +10,7 @@ const fs = require('fs');
 export function GET(request) {
   let usersPath = path.join(process.cwd(), 'dictionary.json');
 var dictionary = fs.readFileSync(usersPath)
-   fs.readFile(usersPath, 'utf8', (err, data) => {
+   fs.readFile(usersPath, 'utf8', (err, dictionary) => {
       if (err) {
          return new Response("there was an error :(");
         reject(err);
