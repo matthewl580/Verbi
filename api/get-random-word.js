@@ -23,7 +23,7 @@ var wordIndex = 0;
     var dictKey = Object.keys(dictionary)[wordIndex];
     word = { 
       word: dictKey,
-    def: dictionary[dictKey],
+    def: Object.values(dictionary)[wordIndex],
     index: wordIndex}
     i++
   }
