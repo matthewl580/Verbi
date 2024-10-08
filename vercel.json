@@ -7,7 +7,7 @@
         "sfo1"
     ],
     "functions": {
-        "server.js": {
+        "api/server.js": {
             "includeFiles": "dictionary.json"
         }
     }
