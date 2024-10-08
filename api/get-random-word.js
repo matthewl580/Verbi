@@ -20,7 +20,7 @@ var wordIndex = 0;
     i < 100
   ) {
      wordIndex = Math.round(Math.random() * Object.keys(dictionary).length);
-    dictKey = Object.keys(dictionary)[wordIndex];
+    var dictKey = Object.keys(dictionary)[wordIndex];
     word = { 
       word: dictKey,
     def: dictionary[dictKey],
