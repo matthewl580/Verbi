@@ -12,14 +12,16 @@ export function GET(request) {
   let dictionary = fs.readFileSync(usersPath);
   var word = { word: undefined, def: undefined };
   let i = 0;
+   var randomLetterNum = Math.round(Math.random() * 25);
+     var defNum = Math.round(Math.random() * Object.keys(dictionary[randomLetterNum]).length);
   // skip over words that don't have a definition atached
   while (
     (word.word == undefined ||
     word.def.MEANINGS["1"] == undefined) &&
     i < 100
   ) {
-    let randomLetterNum = Math.round(Math.random() * 25);
-    let defNum = Math.round(Math.random() * Object.keys(dictionary[randomLetterNum]).length);
+     randomLetterNum = Math.round(Math.random() * 25);
+     defNum = Math.round(Math.random() * Object.keys(dictionary[randomLetterNum]).length);
     word = { word: Object.keys(dictionary[randomLetterNum])[defNum],
     def: Object.values(dictionary[randomLetterNum])[defNum],
     letterNum: randomLetterNum,
