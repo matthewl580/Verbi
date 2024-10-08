@@ -14,17 +14,12 @@ export function GET(request) {
       } else {
         try {
           // Parse the JSON data into a JavaScript object
-          const jsonData = JSON.parse(data);
 
           // Return the parsed JSON object as a JSON response
-          resolve(new Response(JSON.stringify(jsonData), {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          }));
+          resolve(new Response((jsonData)));
         } catch (error) {
           // Handle parsing errors gracefully
-          console.error("Error parsing JSON:", error);
+          console.error("Error parsing: ", error);
           reject(error);
         }
       }
