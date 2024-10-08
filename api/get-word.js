@@ -7,13 +7,13 @@ var dictionary = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'), {
 })
 var dict = JSON.parse(dictionary)
 console.log("file ready?")
-export default async function handler(req, res) {
-    const { body } = req;
+export function GET(request) {
+    const { body } = request;
     var wordIndex =  body.index;
     word = {
         word: Object.keys(dict)[wordIndex],
         def: Object.values(dict)[wordIndex]
 
     }
-    return res.send(word);
+    return new Response(word);
 }
