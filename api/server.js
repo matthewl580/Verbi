@@ -4,27 +4,24 @@
  */
 
 const path = require("path");
-var fs = require('fs');
-//var obj = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'),'utf8');
-/*
- let usersPath = path.join(process.cwd(), 'dictionary.json');
-  let file = fs.readFileSync(usersPath);
-*/
+const fs = require('fs');
+
 export function GET(request) {
- /* console.log(4);
-  console.log(obj);
-  return new Response(obj);*/
-  new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     fs.readFile(path.join(process.cwd(), 'dictionary.json'), "utf8", (err, data) => {
       if (err) {
         reject(err);
+      } else {
+        // Parse the JSON data into a JavaScript object
+        const jsonData = JSON.parse(data);
+
+        // Return the parsed JSON object as a JSON response
+        resolve(new Response(JSON.stringify(jsonData), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }));
       }
-     console.log(65)
-      console.log(data);
-      resolve(data);
     });
-  }).then((data) => {
-   return new Response(data)
-  })
- 
+  });
 }
