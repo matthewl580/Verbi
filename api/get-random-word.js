@@ -10,7 +10,7 @@ var dictionary = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'), {
     encoding: 'utf8',
     flag: 'r'
 })
-var dictLength = Object.entries(dictionary)
+var dictLength = Object.entries(JSON.parse(dictionary))
 console.log("file ready?")
 export function GET(request) {
    /* var word = {
