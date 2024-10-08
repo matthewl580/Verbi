@@ -14,8 +14,8 @@ export function GET(request) {
   let i = 0;
   // skip over words that don't have a definition atached
   while (
-    word.word == undefined ||
-    word.def.MEANINGS["1"] == undefined ||
+    (word.word == undefined ||
+    word.def.MEANINGS["1"] == undefined) &&
     i < 100
   ) {
     let randomLetterNum = Math.round(Math.random() * 25);
