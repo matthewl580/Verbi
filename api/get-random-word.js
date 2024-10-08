@@ -20,7 +20,6 @@ export function GET(request) {
     };
     var i = 0;
     var wordIndex = 0;
-    console.log(dictionary)
     // skip over words that don't have a definition atached
     while (
         (word.word == undefined ||
@@ -28,10 +27,10 @@ export function GET(request) {
         i < 100
     ) {
         wordIndex = Math.round(Math.random() * dictLength);
-        var dictKey = Object.keys(dictionary)[wordIndex];
+        var dictKey = Object.keys(dict)[wordIndex];
         word = {
             word: dictKey,
-            def: Object.values(dictionary)[wordIndex],
+            def: Object.values(dict)[wordIndex],
             index: wordIndex
         }
         i++
