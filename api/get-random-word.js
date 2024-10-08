@@ -10,10 +10,11 @@ var dictionary = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'), {
     encoding: 'utf8',
     flag: 'r'
 })
-var dictLength = Object.entries(JSON.parse(dictionary))
+var dict = JSON.parse(dictionary)
+var dictLength = Object.entries(dict).length
 console.log("file ready?")
 export function GET(request) {
-   /* var word = {
+   var word = {
         word: undefined,
         def: undefined
     };
@@ -23,7 +24,7 @@ export function GET(request) {
     // skip over words that don't have a definition atached
     while (
         (word.word == undefined ||
-            word.def.MEANINGS["1"] == undefined) &&
+            word.def == undefined) &&
         i < 100
     ) {
         wordIndex = Math.round(Math.random() * dictLength);
@@ -34,8 +35,8 @@ export function GET(request) {
             index: wordIndex
         }
         i++
-    }*/
-//console.log(word)
-    return new Response(dictLength);
+    }
+console.log(word)
+    return new Response(word);
 
 }
