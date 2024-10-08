@@ -13,7 +13,7 @@ var dictionary = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'), {
 var dictLength = Object.entries(dictionary).length
 console.log("file ready?")
 export function GET(request) {
-    var word = {
+   /* var word = {
         word: undefined,
         def: undefined
     };
@@ -34,8 +34,8 @@ export function GET(request) {
             index: wordIndex
         }
         i++
-    }
+    }*/
 console.log(word)
-    return new Response(dictLength);
+    return new Response(Object.entries(dictionary));
 
 }
