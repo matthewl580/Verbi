@@ -4,7 +4,10 @@
         "sfo1"
     ],
     "functions": {
-        "api/server.js": {
+        "api/get-random-word.js": {
+            "includeFiles": "dictionary.json"
+        },
+         "api/get-word.js": {
             "includeFiles": "dictionary.json"
         }
     },
