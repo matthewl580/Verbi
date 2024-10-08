@@ -10,9 +10,12 @@ const fs = require('fs');
 export function GET(request) {
   let usersPath = path.join(process.cwd(), 'dictionary.json');
 var dictionary = fs.readFileSync(usersPath)
-  dictionary.then(dictionary => {
-    // Code to run after the file is read successfully
-    console.log(data);
+   fs.readFile(usersPath, 'utf8', (err, data) => {
+      if (err) {
+         return new Response("there was an error :(");
+        reject(err);
+      } else {
+         console.log(data);
   var word = { word: undefined, def: undefined };
   var i = 0;
 var wordIndex = 0;
@@ -36,11 +39,7 @@ console.log(2345)
   console.log(3456543345432)
   console.log(Object.values(dictionary))
   return new Response(JSON.stringify(word));
-  })
-  .catch(err => {
-    // Code to run if there's an error
-    console.error(err);
-     return new Response("there was an error");
-  });
-  
+        resolve(data);
+      }
+    });
 }
