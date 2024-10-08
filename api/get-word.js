@@ -10,9 +10,10 @@ console.log("file ready?")
 export function GET(request) {
     const { body } = request;
     var wordIndex =  body.index;
+    console.log(body)
     word = {
-        word: Object.keys(dict)[wordIndex],
-        def: Object.values(dict)[wordIndex]
+        word: Object.keys(dict)[100],
+        def: Object.values(dict)[100]
 
     }
     return new Response(word);
