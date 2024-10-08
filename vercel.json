@@ -1,8 +1,5 @@
 {   
     "version": 2,
-    "routes": [
-        { "src": "/.*", "dest": "/" }
-    ],
     "regions": [
         "sfo1"
     ],
