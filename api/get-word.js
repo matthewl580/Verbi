@@ -9,7 +9,6 @@ var dict = JSON.parse(dictionary)
 console.log("file ready?")
 export function GET(request) {
     const { body } = request;
-    var wordIndex =  body.index;
     console.log(body)
     word = {
         word: Object.keys(dict)[100],
