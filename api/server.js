@@ -5,7 +5,7 @@
 
 const path = require("path");
 var fs = require('fs');
-var obj = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'),'utf8');
+var obj = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'dictionary.json'),'utf8'));
 /*
  let usersPath = path.join(process.cwd(), 'dictionary.json');
   let file = fs.readFileSync(usersPath);
@@ -13,5 +13,5 @@ var obj = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'),'utf8');
 export function GET(request) {
   console.log(4);
   console.log(obj);
-  return new Response(obj);
+  return new Response(JSON.stringify(obj));
 }
