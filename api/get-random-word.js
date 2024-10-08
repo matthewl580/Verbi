@@ -26,6 +26,9 @@ export function GET(request) {
     defNum:  defNum}
     i++
   }
-
+console.log(2345)
+  console.log(Object.keys(dictionary[randomLetterNum])[defNum])
+  console.log(3456543345432)
+  console.log(Object.values(dictionary[randomLetterNum])[defNum])
   return new Response(JSON.stringify(word));
 }
