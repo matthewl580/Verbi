@@ -37,6 +37,6 @@ export function GET(request) {
         i++
     }
 console.log(word)
-    return new Response(word);
+    return new Response(JSON.stringify(word));
 
 }
