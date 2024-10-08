@@ -16,15 +16,15 @@ function isolateValue(urlString) {
       const value = searchParams.get('index');
       return value;
     } else {
-      return null;  // Or throw an error if 'index' is mandatory
+      return 100;  // Or throw an error if 'index' is mandatory
     }
   }
 export function GET(request) {
     //const { body } = request;
-    console.log(isolateValue(request.url))
+    var wordIndex = isolateValue(request.url)
    var word = {
-        word: Object.keys(dict)[100],
-        def: Object.values(dict)[100]
+        word: Object.keys(dict)[wordIndex],
+        def: Object.values(dict)[wordIndex]
 
     }
     return new Response(JSON.stringify(word));
