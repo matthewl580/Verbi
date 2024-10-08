@@ -1,12 +1,16 @@
 {   
     "version": 2,
-    "builds": [
-      { "src": "*.js", "use": "@vercel/node", "includeFiles": "dictionary.json" }
-    ],
     "routes": [
         { "src": "/.*", "dest": "/" }
     ],
     "regions": [
         "sfo1"
-    ]
+    ],
+    {
+    "functions": {
+        "server.js": {
+            "includeFiles": "dictionary.json"
+        }
+    }
 }
+
