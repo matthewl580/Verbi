@@ -35,7 +35,7 @@ export function GET(request) {
         }
         i++
     }*/
-console.log(word)
+//console.log(word)
     return new Response(Object.entries(dictionary));
 
 }
