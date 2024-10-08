@@ -5,7 +5,7 @@
 
 const path = require("path");
 var fs = require('fs');
-var obj = JSON.parse(fs.readFileSync('dictionary.json', 'utf8'));
+var obj = fs.readFileSync('dictionary.json', 'utf8');
 
 export function GET(request) {
   return new Response(obj);
