@@ -19,7 +19,7 @@ export function GET(request) {
     i < 100
   ) {
     let randomLetterNum = Math.round(Math.random() * 25);
-    let defNum = Math.round(Math.random() * Object.keys(dictionary[letterNum]).length);
+    let defNum = Math.round(Math.random() * Object.keys(dictionary[randomLetterNum]).length);
     word = { word: Object.keys(dictionary[randomLetterNum])[defNum],
     def: Object.values(dictionary[randomLetterNum])[defNum],
     letterNum: randomLetterNum,
