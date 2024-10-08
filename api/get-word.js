@@ -8,8 +8,8 @@ var dictionary = fs.readFileSync(path.join(process.cwd(), 'dictionary.json'), {
 var dict = JSON.parse(dictionary)
 console.log("file ready?")
 export function GET(request) {
-    const { body } = request;
-    console.log(body)
+    //const { body } = request;
+    console.log(request)
    var word = {
         word: Object.keys(dict)[100],
         def: Object.values(dict)[100]
