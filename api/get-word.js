@@ -10,7 +10,7 @@ console.log("file ready?")
 export function GET(request) {
     const { body } = request;
     console.log(body)
-    word = {
+   var word = {
         word: Object.keys(dict)[100],
         def: Object.values(dict)[100]
 
