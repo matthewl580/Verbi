@@ -12,25 +12,23 @@ export function GET(request) {
   let dictionary = fs.readFileSync(usersPath);
   var word = { word: undefined, def: undefined };
   let i = 0;
-   var randomLetterNum = Math.round(Math.random() * 25);
-     var defNum = Math.round(Math.random() * Object.keys(dictionary[randomLetterNum]).length);
+var wordIndex = 0;
   // skip over words that don't have a definition atached
   while (
     (word.word == undefined ||
     word.def.MEANINGS["1"] == undefined) &&
     i < 100
   ) {
-     randomLetterNum = Math.round(Math.random() * 25);
-     defNum = Math.round(Math.random() * Object.keys(dictionary[randomLetterNum]).length);
-    word = { word: Object.keys(dictionary[randomLetterNum])[defNum],
-    def: Object.values(dictionary[randomLetterNum])[defNum],
-    letterNum: randomLetterNum,
-    defNum:  defNum}
+     wordIndex = Math.round(Math.random() * Object.keys(dictionary).length);
+    dictKey = Object.keys(dictionary)[wordIndex]
+    word = { word: dictKey,
+    def: dictionary[dictKey],
+    index: wordIndex}
     i++
   }
 console.log(2345)
-  console.log(Object.keys(dictionary[randomLetterNum])[defNum])
+  console.log(Object.keys(dictionary)
   console.log(3456543345432)
-  console.log(Object.values(dictionary[randomLetterNum])[defNum])
+  console.log(Object.values(dictionary)
   return new Response(JSON.stringify(word));
 }
