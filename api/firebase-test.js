@@ -18,7 +18,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-var storage = firebase.storage();
+
+var storage = app.storage();
 
  function getData(fileName, userCode, func = () => {}) {
     const storageRef = storage.ref(`/Users/${userCode}`);
