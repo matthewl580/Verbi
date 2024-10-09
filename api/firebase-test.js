@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+// Initialize the FirebaseUI Widget using Firebase.
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,6 +18,38 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+var storage = firebase.storage();
+
+ function getData(fileName, userCode, func = () => {}) {
+    const storageRef = storage.ref(`/Users/${userCode}`);
+    storageRef
+      .child(fileName)
+      .getDownloadURL()
+      .then((url) => {
+        fetch(url)
+          .then((response) => response.text())
+          .then((data) => {
+            func(data);
+            return data;
+          });
+      })
+      .catch((error) => {
+        // A full list of error codes is available at https://firebase.google.com/docs/storage/web/handle-errors
+        func(undefined);
+        return undefined;
+      });
+  }
+   function setData(fileName, userCode, data) {
+    const storageRef = storage.ref(`/Users/${userCode}`);
+    storageRef
+      .child(fileName)
+      .putString(data)
+      .then((snapshot) => {
+        console.log("Uploaded a raw string!");
+      });
+  }
+  
 export function GET(request) {
+    setData('crap.json','01',"STOP YAPPING")
     return new Response("test")
 }
