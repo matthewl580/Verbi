@@ -17,3 +17,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export function GET(request) {
+    return new Response("test")
+}
