@@ -61,6 +61,8 @@ const app = initializeApp({
   storageBucket: "verbi-dabf2.appspot.com",
 });
 
+const storageRef = getStorage().bucket();
+
 const storage = getStorage(app);
 async function getStorageFile(file, callback = () => {}) {
   const fileRef = getStorage()
@@ -109,6 +111,18 @@ async function deleteStorageFile(filePath, callback = () => {}) {
 }
 
 export function GET(request) {
-  uploadStorageFile('crap.json','/test',"STOP YAPPING")
+  /*(filePath, {
+          destination: destination, 
+          uploadType: "media",
+          metadata: {
+            contentType: "audio/mpeg",
+          },
+        })*/ 
+  storageRef.upload('STOP YAPPING',{
+    destination: "/", 
+    uploadType: "text",
+    metadata: {
+      contentType: "text",
+    }})
     return new Response("test? :>")
 }
