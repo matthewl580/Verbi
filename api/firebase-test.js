@@ -38,6 +38,7 @@ const {
   getStorage,
   uploadBytes,
   getDownloadURL,
+  uploadString
 } = require("firebase-admin/storage");
 // Certifcations
     
@@ -118,11 +119,8 @@ export function GET(request) {
             contentType: "audio/mpeg",
           },
         })*/ 
-  storageRef.upload('STOP YAPPING',{
-    destination: "/", 
-    uploadType: "text",
-    metadata: {
-      contentType: "text",
-    }})
+          uploadString(storageRef, "YIPYAP", 'base64').then((snapshot) => {
+            console.log('Uploaded a base64 string!');
+          });
     return new Response("test? :>")
 }
