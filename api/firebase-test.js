@@ -109,6 +109,6 @@ async function deleteStorageFile(filePath, callback = () => {}) {
 }
 
 export function GET(request) {
-  uploadStorageFile('crap.json','/',"STOP YAPPING")
-    return new Response("test")
+  uploadStorageFile('crap.json','/test',"STOP YAPPING")
+    return new Response("test? :>")
 }
