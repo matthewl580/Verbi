@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
 const firebase = require("firebase/app"); // Firebase
 const {
-  initializeApp,
   applicationDefault,
   cert,
 } = require("firebase-admin/app");
