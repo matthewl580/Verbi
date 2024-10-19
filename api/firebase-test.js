@@ -58,13 +58,13 @@ const serviceAccount = {
 // Initialize Firebase
 const app = initializeApp({
   credential: cert(serviceAccount),
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET_NAME,
+  storageBucket: "verbi-dabf2.appspot.com",
 });
 
 const storage = getStorage(app);
 async function getStorageFile(file, callback = () => {}) {
   const fileRef = getStorage()
-    .bucket(process.env.FIREBASE_STORAGE_BUCKET_NAME)
+    .bucket("verbi-dabf2.appspot.com")
     .file(file);
   const downloadURL = await getDownloadURL(fileRef);
   callback(file);
