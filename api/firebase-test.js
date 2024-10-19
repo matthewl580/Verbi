@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
 const firebase = require("firebase/app"); // Firebase
 const {
-  applicationDefault,
-  cert,
+  cert
 } = require("firebase-admin/app");
 
 // Initialize the FirebaseUI Widget using Firebase.
