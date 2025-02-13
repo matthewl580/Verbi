@@ -24,8 +24,8 @@ export function GET(request) {
     var wordIndex = isolateValue(request.url)
    var word = {
         word: Object.keys(dict)[wordIndex],
-        def: Object.values(dict)[wordIndex]
-
+        def: Object.values(dict)[wordIndex],
+index: wordIndex
     }
     return new Response(JSON.stringify(word));
 }
